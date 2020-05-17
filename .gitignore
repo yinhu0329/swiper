@@ -120,38 +120,3 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-.idea/.gitignore
-.idea/inspectionProfiles/
-.idea/libraries/
-.idea/misc.xml
-.idea/modules.xml
-.idea/swiper.iml
-.idea/vcs.xml
-common/__init__.py
-common/errors.py
-common/keys.py
-libs/__init__.py
-libs/http.py
-libs/sms.py
-manage.py
-swiper/__init__.py
-swiper/config.py
-swiper/settings.py
-swiper/urls.py
-swiper/wsgi.py
-user/__init__.py
-user/admin.py
-user/apis.py
-user/apps.py
-user/migrations/0001_initial.py
-user/migrations/0002_auto_20200513_1134.py
-user/migrations/__init__.py
-user/models.py
