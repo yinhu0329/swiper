@@ -1,6 +1,7 @@
 from qiniu import Auth, put_file, put_data
 
 from swiper import config
+from worker import celery_app
 
 # 需要填写你的 Access Key 和 Secret Key
 access_key = config.QN_AK
@@ -9,6 +10,7 @@ secret_key = config.QN_SK
 q = Auth(access_key, secret_key)
 
 
+@celery_app.task
 def upload_qiniu(avatar, upload_file_name):
     # 要上传的空间
     bucket_name = config.QN_BUCKET

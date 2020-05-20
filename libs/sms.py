@@ -6,6 +6,7 @@ from django.core.cache import cache
 from swiper import config
 from common import keys
 from swiper.settings import DEBUG
+from worker import celery_app
 
 
 def gen_vcode(size=4):
@@ -15,6 +16,7 @@ def gen_vcode(size=4):
     return random.randint(start, end)
 
 
+@celery_app.task
 def send_sms(phone):
     data = config.YZX_SMS_PARAMS.copy()
     vcode = gen_vcode()
