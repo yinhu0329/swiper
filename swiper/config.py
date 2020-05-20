@@ -9,3 +9,8 @@ YZX_SMS_PARAMS = {
     "param": "None",
     "mobile": "None",
 }
+# 七牛云的配置信息
+QN_URL = 'http://qak32ffdx.bkt.clouddn.com/'
+QN_AK = 'kccHclcg6oMdUj80Q_3lIEhkVk9f79N_HZBkSQez'
+QN_SK = 'laYTyqRpMawtUeGok8ZjQ677uZi74-XpN3S9waYv'
+QN_BUCKET = 'heroxiaohu'

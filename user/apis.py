@@ -11,6 +11,8 @@ from libs.http import render_json
 from user.models import User
 from user.models import Profile
 from user import forms
+from libs.qiniuyun import upload_qiniu
+from swiper import config
 
 
 @require_http_methods(['POST'])
@@ -82,5 +84,35 @@ def edit_profile(request):
 
 
 def upload_avatar(request):
-    """头像上传"""
-    pass
+    """头像上传
+        先获取用户上传的文件
+        然后保存到本地
+        然后上传到七牛云
+        使用七牛云的图片地址更新用户的avatar属性
+    """
+    # 保存到本地,并重新命名文件
+    avatar = request.FILES.get('avatar')
+    # print(type(avatar))
+    # print(avatar.name)
+    # print(avatar.size)
+    # print(avatar.content_type)
+    uid = request.uid
+    filename = keys.AVATAR % uid
+    """
+    将文件保存到本地,用put_file方法上传
+    print(filename)
+    with open(f'./media/{filename}', mode='wb+') as fp:
+        for chunk in avatar.chunks():
+            fp.write(chunk)
+    # 上传到七牛云
+    avatar =f'./media/{filename}'
+    upload_qiniu(avatar, filename)
+    print("------------********-----")
+
+    """
+
+    upload_qiniu(avatar.read(), filename)
+    user = User.objects.get(id=uid)
+    user.avatar = config.QN_URL + filename
+    user.save()
+    return render_json()

@@ -120,3 +120,4 @@ venv.bak/
 
 # mkdocs documentation
 /site
+.qiniu_pythonsdk_hostscache.json
