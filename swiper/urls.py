@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from user import apis as user_api
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/submit/phone', user_api.submit_phone),
     path('api/user/submit/vcode', user_api.submit_vcode),
+    path('api/user/get/profile/', user_api.get_profile),
+    path('api/user/edit/profile/', user_api.edit_profile)
 ]
