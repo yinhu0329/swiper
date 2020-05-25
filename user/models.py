@@ -23,7 +23,7 @@ class User(models.Model):
         max_length=1024, verbose_name='个人形象的URL',
         default="http://qak32ffdx.bkt.clouddn.com/morentouxiang.jpg")
     location = models.CharField(
-        max_length=16, verbose_name='常居地', default="北京")
+        max_length=16, verbose_name='常居地', default="bj")
 
     class Meta:
         db_table = "user"
@@ -57,6 +57,7 @@ class User(models.Model):
 
     def to_dict(self):
         return {
+            'id':self.id,
             'phonenum': self.phonenum,
             'nickname': self.nickname,
             'gender': self.gender,
