@@ -14,7 +14,7 @@ django.setup()
 
 
 from user.models import User
-from vip.models import Vip, Permission, VipPermRelation
+# from vip.models import Vip, Permission, VipPermRelation
 
 
 last_names = (
@@ -27,14 +27,14 @@ last_names = (
 )
 
 first_names = {
-    'male': [
+    '男': [
         '致远', '俊驰', '雨泽', '烨磊', '晟睿',
         '天佑', '文昊', '修洁', '黎昕', '远航',
         '旭尧', '鸿涛', '伟祺', '荣轩', '越泽',
         '浩宇', '瑾瑜', '皓轩', '浦泽', '绍辉',
         '绍祺', '升荣', '圣杰', '晟睿', '思聪'
     ],
-    'female': [
+    '女': [
         '沛玲', '欣妍', '佳琦', '雅芙', '雨婷',
         '韵寒', '莉姿', '雨婷', '宁馨', '妙菱',
         '心琪', '雯媛', '诗婧', '露洁', '静琪',
@@ -59,7 +59,7 @@ def create_robots(n):
             User.objects.create(
                 phonenum='%s' % random.randrange(21000000000, 21900000000),
                 nickname=name,
-                sex=sex,
+                gender=sex,
                 birth_year=random.randint(1980, 2000),
                 birth_month=random.randint(1, 12),
                 birth_day=random.randint(1, 28),
@@ -69,7 +69,7 @@ def create_robots(n):
         except django.db.utils.IntegrityError:
             pass
 
-
+"""
 def init_permission():
     '''创建权限模型'''
     permissions = (
@@ -128,10 +128,10 @@ def create_vip_perm_relations():
     VipPermRelation.objects.get_or_create(vip_id=vip3.id, perm_id=anylocation.id)
     VipPermRelation.objects.get_or_create(vip_id=vip3.id, perm_id=unlimit_like.id)
     VipPermRelation.objects.get_or_create(vip_id=vip3.id, perm_id=show_liked_me.id)
-
+"""
 
 if __name__ == '__main__':
-    # create_robots(5000)
-    init_permission()
-    init_vip()
-    create_vip_perm_relations()
+    create_robots(5000)
+     # init_permission()
+    # init_vip()
+    # create_vip_perm_relations()
